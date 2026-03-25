@@ -1,3 +1,11 @@
+<?php
+include 'conexao.php';
+
+$query = $conect->prepare("SELECT * FROM categorias");
+$query->execute();
+$lista = $query->fetchAll(PDO::FETCH_ASSOC);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +14,7 @@
     <title>Categorias</title>
 </head>
 <body>
-    <button href ="create.php">criar</button>
+    <a href="create.php"><button> criar </button></a>
     <table>
         <thead>
             <tr>
@@ -15,13 +23,17 @@
             </tr>
         </thead>
         <tbody>
+            <?php foreach ($lista as $linha): ?>
             <tr>
-                <td>1</td>
-                <td>Kayron</td>
+                <td><?php echo $linha['id']; ?></td>
+                <td><?php echo $linha['nome']; ?></td>
+                <td>
+                    <a><button>Editar</button></a>
+                    <a><button>Excluir</button></a>
+                </td>
             </tr>
+            <?php endforeach; ?>
         </tbody>
     </table>
-    <button>Editar</button>
-    <button>Excluir</button>
 </body>
 </html>
