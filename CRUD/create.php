@@ -8,7 +8,7 @@
 </head>
 <body>
      <form action="storyC.php" method="post">
-        <label for="name">Criar nova categoria</label>
+        <label for="name">Adicionar nova categoria</label>
         <input type="text" name ="categoria" id ="categoria">
         <button type="submit">salvar</button>
         <a href="index.php"><button type="button">cancelar</button></a>
