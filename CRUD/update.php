@@ -1,5 +1,16 @@
 <?php
-$id = $_GET['id']; 
+    include 'conexao.php';
+
+    $id = $_GET['id']; 
+
+    $stmt = $conect->prepare("SELECT * FROM categorias WHERE id = :id");
+    $stmt->bindValue(':id', $id);
+    $stmt->execute();
+    if ($stmt->rowCount() == 0) { 
+        die('Registro não encontrado');
+    } else {
+        $categoria = $stmt->fetch(PDO::FETCH_OBJ);
+    }
 ?>
 <!DOCTYPE html>
 <html lang="pt">
@@ -14,7 +25,7 @@ $id = $_GET['id'];
         <input type="hidden" name="id" value="<?php echo $id; ?>">
 
         <label for="name">Atualizar categotia</label>
-        <input type="text" name="atualizar">
+        <input type="text" name="atualizar" value="<?php echo $categoria->nome; ?>">
 
         <button type="submit">Salvar</button>
         <a href="index.php"><button type="button">Cancelar</button></a>

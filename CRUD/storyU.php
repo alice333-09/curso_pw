@@ -18,5 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $erro = $stmt->errorInfo();
         echo "Erro ao salvar: " . $erro[2];
     }
+
+    
 }
 

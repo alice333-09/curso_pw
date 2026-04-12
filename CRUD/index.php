@@ -1,21 +1,22 @@
 <?php
-include 'conexao.php';
+    include 'conexao.php';
 
-if (isset($_GET['delete_id'])) {
-    $id_delete = $_GET['delete_id'];
-    
-    $stmt = $conect->prepare("DELETE FROM categorias WHERE id = :id ");
-    $stmt->bindValue(':id', $id_delete);
-    
-    if ($stmt->execute()) {
-        header("Location: index.php");
-        exit();
+    if (isset($_GET['delete_id'])) {
+        $id_delete = $_GET['delete_id'];
+
+        $stmt = $conect->prepare("DELETE FROM categorias WHERE id = :id ");
+        $stmt->bindValue(':id', $id_delete);
+
+        if ($stmt->execute()) {
+            header("Location: index.php");
+            exit();
+        }
     }
-}
 
-$query = $conect->prepare("SELECT * FROM categorias");
-$query->execute();
-$lista = $query->fetchAll(PDO::FETCH_ASSOC);
+
+    $query = $conect->prepare("SELECT * FROM categorias");
+    $query->execute();
+    $lista = $query->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
 
