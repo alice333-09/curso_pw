@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\category;
 
 class CategoryController extends Controller
 {
@@ -11,7 +12,10 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+          // Busca todos os registros da tabela 'jogos'
+        $categories = category::all(); 
+        // Envia os dados para uma view chamada 'jogos.index'
+        return view('categories.index', ['categories' => $categories]);
     }
 
     /**
