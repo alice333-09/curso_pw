@@ -1,10 +1,10 @@
 <div>
     <!-- Smile, breathe, and go slowly. - Thich Nhat Hanh -->
-             <h1>Lista de Jogos</h1>
+             <h1>categorias  </h1>
 
     <ul>
         @foreach($categories as $category)
-            <li>{{ $categories->nome }}</li> 
+            <li>{{ $category->nome }}</li> 
         @endforeach
     </ul>
 </div>
